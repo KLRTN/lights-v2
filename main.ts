@@ -1,5 +1,5 @@
 timeanddate.numericTime(function (hour, minute, second, month, day, year) {
-    timeanddate.set24HourTime(14, 45, 0)
+    timeanddate.set24HourTime(16, 0, 0)
 })
 let time = convertToText(timeanddate.time(timeanddate.TimeFormat.HHMM24hr))
 let strip = neopixel.create(DigitalPin.P0, 43, NeoPixelMode.RGB_RGB)
@@ -39,7 +39,6 @@ basic.forever(function () {
     if (time == "10:29") {
         strip.showColor(neopixel.colors(NeoPixelColors.Red))
     }
-    strip.showColor(neopixel.colors(NeoPixelColors.White))
 })
 basic.forever(function () {
     if (time == "11:55") {
