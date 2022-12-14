@@ -1,27 +1,8 @@
-input.onGesture(Gesture.Shake, function () {
-	
+timeanddate.numericTime(function (hour, minute, second, month, day, year) {
+    timeanddate.set24HourTime(14, 45, 0)
 })
-let hour = 0
-let minute = 0
-timeanddate.set24HourTime(16, 0, 0)
-let time = timeanddate.time(timeanddate.TimeFormat.HHMM24hr)
+let time = convertToText(timeanddate.time(timeanddate.TimeFormat.HHMM24hr))
 let strip = neopixel.create(DigitalPin.P0, 43, NeoPixelMode.RGB_RGB)
-basic.forever(function () {
-    basic.pause(60000)
-    if (minute < 59) {
-        minute += 1
-    } else {
-        minute = 0
-        if (hour < 23) {
-            hour += 1
-        } else {
-            hour = 0
-        }
-    }
-})
-basic.forever(function () {
-    basic.showString(time)
-})
 basic.forever(function () {
     if (time == "8:55") {
         strip.showColor(neopixel.colors(NeoPixelColors.Blue))
@@ -38,6 +19,9 @@ basic.forever(function () {
     if (time == "8:59") {
         strip.showColor(neopixel.colors(NeoPixelColors.Red))
     }
+})
+basic.forever(function () {
+    basic.showString(timeanddate.time(timeanddate.TimeFormat.HHMM24hr))
 })
 basic.forever(function () {
     if (time == "10:25") {

@@ -1,36 +1,15 @@
-def on_button_pressed_a():
-    global hour
-    if hour < 23:
-        hour += 1
-    else:
-        hour = 0
-input.on_button_pressed(Button.A, on_button_pressed_a)
-
-def on_button_pressed_b():
-    global minute
-    if minute < 59:
-        minute += 1
-    else:
-        minute = 0
-input.on_button_pressed(Button.B, on_button_pressed_b)
-
-def on_gesture_shake():
-    basic.show_string(time)
-input.on_gesture(Gesture.SHAKE, on_gesture_shake)
-
-strip: neopixel.Strip = None
-hour = 0
-minute = 0
 time = ""
-adjust = 0
-time = timeanddate.time(timeanddate.TimeFormat.HHMM2_4HR)
-minute = 0
 hour = 0
-timeanddate.set_time(11, 30, 0, timeanddate.MornNight.AM)
+minute = 0
+
+def on_numeric_time(hour2, minute2, second, month, day, year):
+    timeanddate.set24_hour_time(16, 0, 0)
+timeanddate.numeric_time(on_numeric_time)
+
+strip = neopixel.create(DigitalPin.P0, 43, NeoPixelMode.RGB_RGB)
 
 def on_forever():
-    global strip
-    strip = neopixel.create(DigitalPin.P0, 24, NeoPixelMode.RGB_RGB)
+    basic.show_string(timeanddate.time(timeanddate.TimeFormat.HHMM2_4HR))
 basic.forever(on_forever)
 
 def on_forever2():
@@ -57,7 +36,6 @@ def on_forever3():
         strip.show_color(neopixel.colors(NeoPixelColors.ORANGE))
     if time == "8:59":
         strip.show_color(neopixel.colors(NeoPixelColors.RED))
-    strip.show_color(neopixel.colors(NeoPixelColors.WHITE))
 basic.forever(on_forever3)
 
 def on_forever4():
@@ -85,7 +63,6 @@ def on_forever5():
         strip.show_color(neopixel.colors(NeoPixelColors.ORANGE))
     if time == "11:59":
         strip.show_color(neopixel.colors(NeoPixelColors.RED))
-    strip.show_color(neopixel.colors(NeoPixelColors.WHITE))
 basic.forever(on_forever5)
 
 def on_forever6():
@@ -99,7 +76,6 @@ def on_forever6():
         strip.show_color(neopixel.colors(NeoPixelColors.ORANGE))
     if time == "12:34":
         strip.show_color(neopixel.colors(NeoPixelColors.RED))
-    strip.show_color(neopixel.colors(NeoPixelColors.WHITE))
 basic.forever(on_forever6)
 
 def on_forever7():
@@ -113,7 +89,6 @@ def on_forever7():
         strip.show_color(neopixel.colors(NeoPixelColors.ORANGE))
     if time == "13:04":
         strip.show_color(neopixel.colors(NeoPixelColors.RED))
-    strip.show_color(neopixel.colors(NeoPixelColors.WHITE))
 basic.forever(on_forever7)
 
 def on_forever8():
@@ -127,19 +102,17 @@ def on_forever8():
         strip.show_color(neopixel.colors(NeoPixelColors.ORANGE))
     if time == "14:34":
         strip.show_color(neopixel.colors(NeoPixelColors.RED))
-    strip.show_color(neopixel.colors(NeoPixelColors.WHITE))
 basic.forever(on_forever8)
 
 def on_forever9():
-    if time >= "16:00":
+    if time == "16:00":
         strip.show_rainbow(1, 360)
-    if time == "14:31":
+    if time == "16:01":
         strip.show_rainbow(1, 360)
-    if time == "14:32":
+    if time == "16:02":
         strip.show_rainbow(1, 360)
-    if time == "14:33":
+    if time == "16:03":
         strip.show_rainbow(1, 360)
-    if time == "14:34":
+    if time == "16:04":
         strip.show_rainbow(1, 360)
-    strip.show_color(neopixel.colors(NeoPixelColors.WHITE))
 basic.forever(on_forever9)
