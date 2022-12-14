@@ -1,15 +1,11 @@
 input.onGesture(Gesture.Shake, function () {
-    basic.showString(time)
+	
 })
 let hour = 0
 let minute = 0
-let time = ""
-time = timeanddate.time(timeanddate.TimeFormat.HHMM24hr)
-timeanddate.setTime(16, 0, 0, timeanddate.MornNight.AM)
+timeanddate.set24HourTime(16, 0, 0)
+let time = timeanddate.time(timeanddate.TimeFormat.HHMM24hr)
 let strip = neopixel.create(DigitalPin.P0, 43, NeoPixelMode.RGB_RGB)
-basic.forever(function () {
-	
-})
 basic.forever(function () {
     basic.pause(60000)
     if (minute < 59) {
@@ -22,6 +18,9 @@ basic.forever(function () {
             hour = 0
         }
     }
+})
+basic.forever(function () {
+    basic.showString(time)
 })
 basic.forever(function () {
     if (time == "8:55") {
@@ -39,7 +38,6 @@ basic.forever(function () {
     if (time == "8:59") {
         strip.showColor(neopixel.colors(NeoPixelColors.Red))
     }
-    strip.showColor(neopixel.colors(NeoPixelColors.White))
 })
 basic.forever(function () {
     if (time == "10:25") {
@@ -75,7 +73,6 @@ basic.forever(function () {
     if (time == "11:59") {
         strip.showColor(neopixel.colors(NeoPixelColors.Red))
     }
-    strip.showColor(neopixel.colors(NeoPixelColors.White))
 })
 basic.forever(function () {
     if (time == "12:30") {
@@ -93,7 +90,6 @@ basic.forever(function () {
     if (time == "12:34") {
         strip.showColor(neopixel.colors(NeoPixelColors.Red))
     }
-    strip.showColor(neopixel.colors(NeoPixelColors.White))
 })
 basic.forever(function () {
     if (time == "13:00") {
@@ -111,7 +107,6 @@ basic.forever(function () {
     if (time == "13:04") {
         strip.showColor(neopixel.colors(NeoPixelColors.Red))
     }
-    strip.showColor(neopixel.colors(NeoPixelColors.White))
 })
 basic.forever(function () {
     if (time == "14:30") {
@@ -129,23 +124,21 @@ basic.forever(function () {
     if (time == "14:34") {
         strip.showColor(neopixel.colors(NeoPixelColors.Red))
     }
-    strip.showColor(neopixel.colors(NeoPixelColors.White))
 })
 basic.forever(function () {
-    if (time >= "16:00") {
+    if (time == "16:00") {
         strip.showRainbow(1, 360)
     }
-    if (time == "14:31") {
+    if (time == "16:01") {
         strip.showRainbow(1, 360)
     }
-    if (time == "14:32") {
+    if (time == "16:02") {
         strip.showRainbow(1, 360)
     }
-    if (time == "14:33") {
+    if (time == "16:03") {
         strip.showRainbow(1, 360)
     }
-    if (time == "14:34") {
+    if (time == "16:04") {
         strip.showRainbow(1, 360)
     }
-    strip.showColor(neopixel.colors(NeoPixelColors.White))
 })
