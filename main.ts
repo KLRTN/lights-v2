@@ -1,26 +1,30 @@
+let time = ""
 timeanddate.numericTime(function (hour, minute, second, month, day, year) {
-    timeanddate.set24HourTime(16, 0, 0)
+    timeanddate.set24HourTime(8, 54, 0)
 })
-let time = convertToText(timeanddate.time(timeanddate.TimeFormat.HHMM24hr))
 let strip = neopixel.create(DigitalPin.P0, 43, NeoPixelMode.RGB_RGB)
 basic.forever(function () {
-    if (time == "8:55") {
+    if (time == "08:55") {
         strip.showColor(neopixel.colors(NeoPixelColors.Blue))
     }
-    if (time == "8:56") {
-        strip.showColor(neopixel.colors(NeoPixelColors.Green))
+    if (time == "08:56") {
+        strip.showColor(neopixel.colors(NeoPixelColors.Red))
     }
-    if (time == "8:57") {
+    if (time == "08:57") {
         strip.showColor(neopixel.colors(NeoPixelColors.Yellow))
     }
-    if (time == "8:58") {
+    if (time == "08:58") {
         strip.showColor(neopixel.colors(NeoPixelColors.Orange))
     }
-    if (time == "8:59") {
-        strip.showColor(neopixel.colors(NeoPixelColors.Red))
+    if (time == "08:59") {
+        strip.showColor(neopixel.colors(NeoPixelColors.Green))
+    }
+    if (time == "09:00") {
+        strip.showColor(neopixel.colors(NeoPixelColors.White))
     }
 })
 basic.forever(function () {
+    time = convertToText(timeanddate.time(timeanddate.TimeFormat.HHMM24hr))
     basic.showString(timeanddate.time(timeanddate.TimeFormat.HHMM24hr))
 })
 basic.forever(function () {
